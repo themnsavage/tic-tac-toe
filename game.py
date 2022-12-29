@@ -23,6 +23,14 @@ class Game:
 
     def print_game_board(self):
         print(self._create_draw_game_board())
+    
+    def _is_game_board_filled(self):
+        for row in self._game_board:
+            for element in row:
+                if element == '':
+                    return False
+        
+        return True
 
     def _create_draw_game_board(self):
         self._draw_board = ""

@@ -83,7 +83,25 @@ def test_print_game_board():
     game_object.print_game_board()
     pass
 
+def test_board_is_filled():
+    filled_game_board = [
+                        ['X','O','O'],
+                        ['O','X','X'],
+                        ['O','O','X']
+                        ]
+    un_filled_game_board = [
+                    ['X','O',''],
+                    ['','X','X'],
+                    ['O','O','']
+                    ]
 
+    game_object = Game()
+    
+    game_object._game_board = filled_game_board
+    assert True == game_object._is_game_board_filled()
+
+    game_object._game_board = un_filled_game_board
+    assert False == game_object._is_game_board_filled()
 
 
     
