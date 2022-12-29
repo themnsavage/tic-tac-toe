@@ -1,4 +1,4 @@
-# tik-tac-toe
+# tic-tac-toe
 
 ## How to run unit tests
 1. install pytest
