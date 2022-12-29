@@ -21,6 +21,9 @@ class Game:
     def add_turn_to_game_board(self, row, column, game_piece):
         self._game_board[row][column] = game_piece
 
+    def print_game_board(self):
+        print(self._create_draw_game_board())
+
     def _create_draw_game_board(self):
         self._draw_board = ""
         column = 0

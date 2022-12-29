@@ -78,6 +78,10 @@ def test_create_filled_draw_board():
     
     assert filled_draw_board == game_object._draw_board 
 
+def test_print_game_board():
+    game_object = Game()
+    game_object.print_game_board()
+    pass
 
 
 
