@@ -55,6 +55,30 @@ def test_add_turn_to_game_board():
 
     assert game_object.get_game_board() == updated_game_board
 
+def test_create_empty_draw_board():
+    empty_draw_board = "|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n"
+    
+
+    game_object = Game()
+    game_object._create_draw_game_board()
+
+    assert empty_draw_board == game_object._draw_board
+
+
+def test_create_filled_draw_board():
+    filled_draw_board = "|  X  |  O  |     |     \n ----- ----- -----\n|     |  X  |  X  |     \n ----- ----- -----\n|  O  |  O  |     |     \n"
+    
+    game_object = Game()
+    game_object._game_board = [
+                        ['X','O',''],
+                        ['','X','X'],
+                        ['O','O','']
+                        ]
+    game_object._create_draw_game_board()
+    
+    assert filled_draw_board == game_object._draw_board 
+
+
 
 
 

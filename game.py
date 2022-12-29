@@ -20,3 +20,26 @@ class Game:
 
     def add_turn_to_game_board(self, row, column, game_piece):
         self._game_board[row][column] = game_piece
+
+    def _create_draw_game_board(self):
+        self._draw_board = ""
+        column = 0
+        for i in range(5):
+            if i%2 == 0:
+                for row in range(3):
+                    current_grid = self._game_board[column][row]
+                    
+                    if current_grid == 'X':
+                        self._draw_board += "|  X  "
+                    
+                    elif current_grid == 'O':
+                        self._draw_board += "|  O  "                    
+                   
+                    else:
+                        self._draw_board += "|     "
+                
+                self._draw_board += "|     "
+                column += 1
+            else:
+                self._draw_board += " -----" * 3
+            self._draw_board += "\n"
