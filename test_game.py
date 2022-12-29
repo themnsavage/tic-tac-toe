@@ -103,10 +103,10 @@ def test_board_is_filled():
     game_object = Game()
     
     game_object._game_board = filled_game_board
-    assert True == game_object._is_game_board_filled()
+    assert True == game_object.is_game_board_filled()
 
     game_object._game_board = un_filled_game_board
-    assert False == game_object._is_game_board_filled()
+    assert False == game_object.is_game_board_filled()
 
 
     

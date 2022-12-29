@@ -43,7 +43,7 @@ class Game:
         guide_game_board = "|  1  |  2  |  3  |     \n ----- ----- -----\n|  4  |  5  |  6  |     \n ----- ----- -----\n|  7  |  8  |  9  |     \n"
         print(guide_game_board)
 
-    def _is_game_board_filled(self):
+    def is_game_board_filled(self):
         for row in self._game_board:
             for element in row:
                 if element == '':
