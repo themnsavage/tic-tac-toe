@@ -51,6 +51,72 @@ class Game:
         
         return True
 
+    def check_for_winner(self):
+        horzontal_winner = self._check_winner_horizontal()
+        if horzontal_winner != False: return horzontal_winner
+        
+        vertical_winner = self._check_winner_vertical()
+        if vertical_winner != False: return vertical_winner
+        
+        diangle_winner = self._check_winner_diangle()
+        if diangle_winner != False: return diangle_winner
+
+        return False
+
+        
+
+    def _check_winner_horizontal(self):
+        temp_list = []
+        for row in self._game_board:
+            for element in row:
+                temp_list.append(element)
+            
+            is_temp_list_winner = self._check_possible_winner_temp_list(temp_list)
+
+            if is_temp_list_winner != False:
+                return is_temp_list_winner
+            else:
+                temp_list = []
+        
+        return False
+
+    def _check_winner_vertical(self):
+        temp_list = []
+
+        for i in range(3):
+            for z in range(3):
+                temp_list.append(self._game_board[z][i])
+
+                is_temp_list_winner = self._check_possible_winner_temp_list(temp_list)
+
+            if is_temp_list_winner != False:
+                return is_temp_list_winner
+            else:
+                temp_list = []
+
+        return False
+
+    def _check_winner_diangle(self):   
+        is_temp_list_winner = self._check_possible_winner_temp_list([self._game_board[0][0],self._game_board[1][1],self._game_board[2][2]])
+        if is_temp_list_winner != False:
+            return is_temp_list_winner
+
+        is_temp_list_winner = self._check_possible_winner_temp_list([self._game_board[2][0],self._game_board[1][1],self._game_board[0][2]])
+        if is_temp_list_winner != False:
+            return is_temp_list_winner
+
+        return False
+    def _check_possible_winner_temp_list(self, temp_list):
+        prev_element = None
+        winning_list = True
+
+        for current_element in temp_list:
+            if (prev_element != None and current_element != prev_element) or current_element == '':
+                return False
+            prev_element = current_element
+
+        return prev_element 
+
     def _create_draw_game_board(self):
         self._draw_board = ""
         column = 0
