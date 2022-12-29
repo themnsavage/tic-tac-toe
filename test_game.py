@@ -40,7 +40,6 @@ def test_get_player_names():
 
 
 def test_add_turn_to_game_board():
-
     row = 0
     column = 0
     game_piece = 'X'
