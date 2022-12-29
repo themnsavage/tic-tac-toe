@@ -39,6 +39,24 @@ def test_get_player_names():
     assert player2_name == game_object.get_player2_name()
 
 
+def test_add_turn_to_game_board():
+
+    row = 0
+    column = 0
+    game_piece = 'X'
+    updated_game_board = [
+                        ['X','',''],
+                        ['','',''],
+                        ['','','']
+                        ]
+
+    game_object = Game()
+
+    game_object.add_turn_to_game_board(row, column, game_piece)
+
+    assert game_object.get_game_board() == updated_game_board
+
+
 
 
     

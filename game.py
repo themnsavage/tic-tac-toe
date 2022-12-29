@@ -17,3 +17,7 @@ class Game:
 
     def get_player2_name(self):
         return self._player2_name
+
+    
+    def add_turn_to_game_board(self, row, column, game_piece):
+        self._game_board[row][column] = game_piece
