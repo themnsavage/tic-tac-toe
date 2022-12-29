@@ -83,6 +83,11 @@ def test_print_game_board():
     game_object.print_game_board()
     pass
 
+def test_print_guide_game_board():
+    game_object = Game()
+    game_object.print_guide_game_board()
+    pass
+
 def test_board_is_filled():
     filled_game_board = [
                         ['X','O','O'],
