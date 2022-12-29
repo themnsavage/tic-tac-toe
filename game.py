@@ -18,7 +18,22 @@ class Game:
     def get_player2_name(self):
         return self._player2_name
 
-    def add_turn_to_game_board(self, row, column, game_piece):
+    def add_turn_to_game_board(self, grid_number, game_piece):
+        grid = {
+            1: [0,0],
+            2: [0,1],
+            3: [0,2],
+            4: [1,0],
+            5: [1,1],
+            6: [1,2],
+            7: [2,0],
+            8: [2,1],
+            9: [2,2],
+        }
+
+        row = grid[grid_number][0]
+        column = grid[grid_number][1]
+
         self._game_board[row][column] = game_piece
 
     def print_game_board(self):
