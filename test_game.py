@@ -40,8 +40,7 @@ def test_get_player_names():
 
 
 def test_add_turn_to_game_board():
-    row = 2
-    column = 0
+    grid_number = 4
     game_piece = 'X'
     updated_game_board = [
                         ['','',''],
@@ -51,7 +50,7 @@ def test_add_turn_to_game_board():
 
     game_object = Game()
 
-    game_object.add_turn_to_game_board(4, game_piece)
+    game_object.add_turn_to_game_board(grid_number, game_piece)
 
     assert game_object.get_game_board() == updated_game_board
 
