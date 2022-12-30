@@ -1,7 +1,7 @@
 import pytest
 from app.game_board import Game_Board
 
-def test_game_init():
+def test_game_board_init():
     default_game_board = [
                         ['','',''],
                         ['','',''],
