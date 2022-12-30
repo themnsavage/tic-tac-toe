@@ -1,5 +1,5 @@
 import pytest
-from app.game_board import Game_Board
+from module.app.game_board import Game_Board
 
 def test_game_board_init():
     default_game_board = [
@@ -38,6 +38,21 @@ def test_add_turn_to_game_board():
     game_object.add_turn_to_game_board(grid_number, game_piece)
 
     assert game_object.get_game_board() == updated_game_board
+    
+def test_is_grid_empty():
+    mock_game_board = [
+                ['','X',''],
+                ['','',''],
+                ['','','']
+                ]
+    empty_grid = 1
+    filled_grid = 2
+    
+    game_board_object = Game_Board()
+    game_board_object._game_board = mock_game_board
+    
+    assert True == game_board_object.is_grid_empty(empty_grid)
+    assert False == game_board_object.is_grid_empty(filled_grid)
 
 def test_create_empty_draw_board():
     empty_draw_board = "|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n"
@@ -121,78 +136,80 @@ def test_check_winner_horizontal():
     game_object._game_board = losing_horzontal_game_board
     assert False == game_object._check_winner_horizontal()
 
-    def test_check_winner_vertical():
-        winning_vertical_game_board = [
-                        ['X','O',''],
-                        ['X','O','X'],
-                        ['X','','O']
-                        ]
+def test_check_winner_vertical():
+    winning_vertical_game_board = [
+                    ['X','O',''],
+                    ['X','O','X'],
+                    ['X','','O']
+                    ]
 
-        losing_vertical_game_board = [
-                        ['X','O',''],
-                        ['X','X','X'],
-                        ['O','','O']
-                        ]
-        
-        game_object = Game_Board()
+    losing_vertical_game_board = [
+                    ['X','O',''],
+                    ['X','X','X'],
+                    ['O','','O']
+                    ]
+    
+    game_object = Game_Board()
 
-        game_object._game_board = winning_vertical_game_board
-        assert 'X' == game_object._check_winner_vertical()
+    game_object._game_board = winning_vertical_game_board
+    assert 'X' == game_object._check_winner_vertical()
 
-        game_object._game_board = losing_vertical_game_board
-        assert False == game_object._check_winner_vertical()
+    game_object._game_board = losing_vertical_game_board
+    assert False == game_object._check_winner_vertical()
 
-    def test_check_winner_diangle():
-        winning_diangle_game_board = [
-                        ['X','O',''],
-                        ['O','X','O'],
-                        ['X','','X']
-                        ]
+def test_check_winner_diangle():
+    winning_diangle_game_board = [
+                    ['X','O',''],
+                    ['O','X','O'],
+                    ['X','','X']
+                    ]
 
-        losing_diangle_game_board = [
-                        ['X','O',''],
-                        ['X','X','X'],
-                        ['O','','O']
-                        ]
-        
-        game_object = Game_Board()
+    losing_diangle_game_board = [
+                    ['X','O',''],
+                    ['X','X','X'],
+                    ['O','','O']
+                    ]
+    
+    game_object = Game_Board()
 
-        game_object._game_board = winning_dianglel_game_board
-        assert 'X' == game_object._check_winner_diangle()
+    game_object._game_board = winning_diangle_game_board
+    assert 'X' == game_object._check_winner_diangle()
 
-        game_object._game_board = losing_diangle_game_board
-        assert False == game_object._check_winner_diangle()
+    game_object._game_board = losing_diangle_game_board
+    assert False == game_object._check_winner_diangle()
 
-    def test_check_for_winner():
-        winning_horzontal_game_board = [
-                        ['X','O',''],
-                        ['X','X','X'],
-                        ['O','','O']
-                        ]
-        winning_vertical_game_board = [
-                        ['X','O',''],
-                        ['X','O','X'],
-                        ['X','','O']
-                        ]
-        winning_diangle_game_board = [
-                        ['X','O',''],
-                        ['O','X','O'],
-                        ['X','','X']
-                        ]
-        losing_game_board =  [
-                        ['X','O','O'],
-                        ['O','X','X'],
-                        ['X','X','O']
-                        ]
+def test_check_for_winner():
+    winning_horzontal_game_board = [
+                    ['X','O',''],
+                    ['X','X','X'],
+                    ['O','','O']
+                    ]
+    winning_vertical_game_board = [
+                    ['X','O',''],
+                    ['X','O','X'],
+                    ['X','','O']
+                    ]
+    winning_diangle_game_board = [
+                    ['X','O',''],
+                    ['O','X','O'],
+                    ['X','','X']
+                    ]
+    losing_game_board =  [
+                    ['X','O','O'],
+                    ['O','X','X'],
+                    ['X','X','']
+                    ]
 
-        game_object._game_board = winning_horzontal_game_board
-        assert 'X' == game_object.check_for_winner()
+    game_object = Game_Board()
+    
+    game_object._game_board = winning_horzontal_game_board
+    assert 'X' == game_object.check_for_winner()
 
-        game_object._game_board = winning_vertical_game_board
-        assert 'X' == game_object.check_for_winner()
-        
-        game_object._game_board = winning_diangle_game_board
-        assert 'X' == game_object.check_for_winner()
+    game_object._game_board = winning_vertical_game_board
+    assert 'X' == game_object.check_for_winner()
+    
+    game_object._game_board = winning_diangle_game_board
+    assert 'X' == game_object.check_for_winner()
 
-        game_object._game_board = losing_game_board
-        assert False == game_object.check_for_winner()           
+    game_object._game_board = losing_game_board
+    assert False == game_object.check_for_winner()           

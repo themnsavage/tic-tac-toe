@@ -20,14 +20,31 @@ class Game_Board:
             8: [2,1],
             9: [2,2],
         }
-
         row = grid[grid_number][0]
         column = grid[grid_number][1]
 
         self._game_board[row][column] = game_piece
+    
+    def is_grid_empty(self, grid_number):
+        grid = {
+            1: [0,0],
+            2: [0,1],
+            3: [0,2],
+            4: [1,0],
+            5: [1,1],
+            6: [1,2],
+            7: [2,0],
+            8: [2,1],
+            9: [2,2],
+        }
+        row = grid[grid_number][0]
+        column = grid[grid_number][1]
+        
+        return self._game_board[row][column] == ''
 
     def print_game_board(self):
-        print(self._create_draw_game_board())
+        self._create_draw_game_board()
+        print(self._draw_board)
     
     def print_guide_game_board(self):
         guide_game_board = "|  1  |  2  |  3  |     \n ----- ----- -----\n|  4  |  5  |  6  |     \n ----- ----- -----\n|  7  |  8  |  9  |     \n"
@@ -53,8 +70,6 @@ class Game_Board:
 
         return False
 
-        
-
     def _check_winner_horizontal(self):
         temp_list = []
         for row in self._game_board:
@@ -72,6 +87,7 @@ class Game_Board:
 
     def _check_winner_vertical(self):
         temp_list = []
+                                            
 
         for i in range(3):
             for z in range(3):
@@ -98,7 +114,6 @@ class Game_Board:
         return False
     def _check_possible_winner_temp_list(self, temp_list):
         prev_element = None
-        winning_list = True
 
         for current_element in temp_list:
             if (prev_element != None and current_element != prev_element) or current_element == '':
