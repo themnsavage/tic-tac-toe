@@ -1,5 +1,5 @@
 import pytest
-from game import Game
+from app.game_board import Game_Board
 
 def test_game_init():
     default_game_board = [
@@ -8,7 +8,7 @@ def test_game_init():
                         ['','','']
                         ]        
 
-    game_object = Game()
+    game_object = Game_Board()
 
     assert game_object._game_board == default_game_board
 
@@ -20,7 +20,7 @@ def test_get_game_board():
                         ['','','']
                         ]
 
-    game_object = Game()
+    game_object = Game_Board()
 
     assert default_game_board == game_object.get_game_board()
 
@@ -33,7 +33,7 @@ def test_add_turn_to_game_board():
                         ['','','']
                         ]
 
-    game_object = Game()
+    game_object = Game_Board()
 
     game_object.add_turn_to_game_board(grid_number, game_piece)
 
@@ -43,7 +43,7 @@ def test_create_empty_draw_board():
     empty_draw_board = "|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n"
     
 
-    game_object = Game()
+    game_object = Game_Board()
     game_object._create_draw_game_board()
 
     assert empty_draw_board == game_object._draw_board
@@ -52,7 +52,7 @@ def test_create_empty_draw_board():
 def test_create_filled_draw_board():
     filled_draw_board = "|  X  |  O  |     |     \n ----- ----- -----\n|     |  X  |  X  |     \n ----- ----- -----\n|  O  |  O  |     |     \n"
     
-    game_object = Game()
+    game_object = Game_Board()
     game_object._game_board = [
                         ['X','O',''],
                         ['','X','X'],
@@ -63,12 +63,12 @@ def test_create_filled_draw_board():
     assert filled_draw_board == game_object._draw_board 
 
 def test_print_game_board():
-    game_object = Game()
+    game_object = Game_Board()
     game_object.print_game_board()
     pass
 
 def test_print_guide_game_board():
-    game_object = Game()
+    game_object = Game_Board()
     game_object.print_guide_game_board()
     pass
 
@@ -84,7 +84,7 @@ def test_board_is_filled():
                     ['O','O','']
                     ]
 
-    game_object = Game()
+    game_object = Game_Board()
     
     game_object._game_board = filled_game_board
     assert True == game_object.is_game_board_filled()
@@ -96,7 +96,7 @@ def test_check_possible_winner_temp_list():
     winning_list = ['X', 'X', 'X']
     losing_list = ['O', 'O', '']
 
-    game_object = Game()
+    game_object = Game_Board()
 
     assert 'X' == game_object._check_possible_winner_temp_list(winning_list)
     assert False == game_object._check_possible_winner_temp_list(losing_list)
@@ -113,7 +113,7 @@ def test_check_winner_horizontal():
                     ['X','','O']
                     ]
     
-    game_object = Game()
+    game_object = Game_Board()
 
     game_object._game_board = winning_horzontal_game_board
     assert 'X' == game_object._check_winner_horizontal()
@@ -134,7 +134,7 @@ def test_check_winner_horizontal():
                         ['O','','O']
                         ]
         
-        game_object = Game()
+        game_object = Game_Board()
 
         game_object._game_board = winning_vertical_game_board
         assert 'X' == game_object._check_winner_vertical()
@@ -155,7 +155,7 @@ def test_check_winner_horizontal():
                         ['O','','O']
                         ]
         
-        game_object = Game()
+        game_object = Game_Board()
 
         game_object._game_board = winning_dianglel_game_board
         assert 'X' == game_object._check_winner_diangle()

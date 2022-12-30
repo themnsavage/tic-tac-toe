@@ -1,4 +1,4 @@
-class Game:
+class Game_Board:
     def __init__(self): 
         self._game_board = [['','',''],
                             ['','',''],
