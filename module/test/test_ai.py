@@ -36,6 +36,23 @@ def test_get_best_move(mock_mini_max):
     
     assert excepted_best_move == ai_object.get_best_move()
 
+def test_get_best_move_no_mocks():
+    current_game_board = [
+            ['X','',''],
+            ['X','O',''],
+            ['O','','']
+            ]
+    ai_game_piece = 'X'
+    best_move = 3
+    game_board = Game_Board()
+
+    game_board._game_board = current_game_board
+    ai_player = AI(game_board, ai_game_piece)
+
+    assert best_move == ai_player.get_best_move()
+
+
+
 
 
 

@@ -18,7 +18,7 @@ class AI:
         for grid_number in range(1,10):
             if self._game_board_object.is_grid_empty(grid_number):
                 self._game_board_object.add_turn_to_game_board(grid_number, self._game_piece)
-                score = self._mini_max(depth=0, is_maximizing=True)
+                score = self._mini_max(depth=0, is_maximizing=False)
                 self._game_board_object.add_turn_to_game_board(grid_number, '')
 
                 if best_score is None or score > best_score:
