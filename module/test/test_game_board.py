@@ -55,7 +55,7 @@ def test_is_grid_empty():
     assert False == game_board_object.is_grid_empty(filled_grid)
 
 def test_create_empty_draw_board():
-    empty_draw_board = "|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n ----- ----- -----\n|     |     |     |     \n"
+    empty_draw_board = "|  1  |  2  |  3  |     \n ----- ----- -----\n|  4  |  5  |  6  |     \n ----- ----- -----\n|  7  |  8  |  9  |     \n"
     
 
     game_object = Game_Board()
@@ -65,7 +65,7 @@ def test_create_empty_draw_board():
 
 
 def test_create_filled_draw_board():
-    filled_draw_board = "|  X  |  O  |     |     \n ----- ----- -----\n|     |  X  |  X  |     \n ----- ----- -----\n|  O  |  O  |     |     \n"
+    filled_draw_board = "|  X  |  O  |  3  |     \n ----- ----- -----\n|  4  |  X  |  X  |     \n ----- ----- -----\n|  O  |  O  |  9  |     \n"
     
     game_object = Game_Board()
     game_object._game_board = [
@@ -80,11 +80,6 @@ def test_create_filled_draw_board():
 def test_print_game_board():
     game_object = Game_Board()
     game_object.print_game_board()
-    pass
-
-def test_print_guide_game_board():
-    game_object = Game_Board()
-    game_object.print_guide_game_board()
     pass
 
 def test_board_is_filled():

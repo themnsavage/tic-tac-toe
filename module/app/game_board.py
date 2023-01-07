@@ -45,10 +45,6 @@ class Game_Board:
     def print_game_board(self):
         self._create_draw_game_board()
         print(self._draw_board)
-    
-    def print_guide_game_board(self):
-        guide_game_board = "|  1  |  2  |  3  |     \n ----- ----- -----\n|  4  |  5  |  6  |     \n ----- ----- -----\n|  7  |  8  |  9  |     \n"
-        print(guide_game_board)
 
     def is_game_board_filled(self):
         for row in self._game_board:
@@ -125,6 +121,7 @@ class Game_Board:
     def _create_draw_game_board(self):
         self._draw_board = ""
         column = 0
+        grid_number = 1
         for i in range(5):
             if i%2 == 0:
                 for row in range(3):
@@ -137,7 +134,8 @@ class Game_Board:
                         self._draw_board += "|  O  "                    
                    
                     else:
-                        self._draw_board += "|     "
+                        self._draw_board += f"|  {grid_number}  "
+                    grid_number += 1
                 
                 self._draw_board += "|     "
                 column += 1
